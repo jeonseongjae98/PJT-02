@@ -5,7 +5,12 @@ from pprint import pprint
 def ranking():
     pass
     # 여기에 코드를 작성합니다.
+    url = "https://api.themoviedb.org/3/movie/popular?api_key={API_KEY}&language=ko-kr&region=KR"
+    response = requests.get(url).json()
+    re = response["results"]
+    result = sorted(re, key=lambda x: x['vote_average'], reverse=True)
 
+    return result[:5]
 
 # 아래의 코드는 수정하지 않습니다.
 if __name__ == '__main__':

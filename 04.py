@@ -5,7 +5,13 @@ from pprint import pprint
 def search_movie(title):
     pass
     # 여기에 코드를 작성합니다.
-
+    url = f'https://api.themoviedb.org/3/search/movie?api_key={API_KEY}&query={title}'
+    response = requests.get(url).json()
+    re = response["results"]
+    try:
+        return re[0]["id"]
+    except:
+        return None
 
 # 아래의 코드는 수정하지 않습니다.
 if __name__ == '__main__':
